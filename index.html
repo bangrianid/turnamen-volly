@@ -6,33 +6,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Turnamen Volly Ball Simpang Kemili 2025</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f0f0f5; }
-    h1, h2 { text-align: center; }
-    .content { max-width: 800px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    .content ul { list-style: none; padding: 0; }
-    .content li { padding: 10px; border-bottom: 1px solid #ccc; }
-    .banner { width: 100%; max-width: 800px; display: block; margin: 20px auto; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f5;
+      color: #000;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    .banner {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .ticker {
+      background: red;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+    }
   </style>
 </head>
 <body>
-  <h1>Turnamen Volly Ball Piala Pemuda Simpang Kemili – Silih Nara 2025</h1>
+
+<div class="ticker" id="liveScore">🔴 Skor Terkini: Memuat...</div>
+
+<div class="container">
   <img src="banner.jpg" alt="Banner Turnamen" class="banner" />
+  <h2>📅 Turnamen Volly Ball Simpang Kemili – Silih Nara 2025</h2>
+  <p><strong>Tanggal:</strong> 28 Juni – 16 Agustus 2025</p>
+  <p><strong>Lokasi:</strong> Lapangan Volly Ball Simpang Kemili, Silih Nara, Aceh Tengah</p>
+</div>
 
-  <div class="content">
-    <h2>📅 Informasi Turnamen</h2>
-    <p><strong>Tanggal:</strong> 28 Juni – 16 Agustus 2025</p>
-    <p><strong>Lokasi:</strong> Lapangan Volly Ball Simpang Kemili, Silih Nara, Aceh Tengah</p>
-    <p><strong>Tim Peserta:</strong> Kipes Bayur, Aras Angkasa, Rajawali VC, Putra Gintes, JRT VC, Putra Bahgie</p>
-  </div>
+<script>
+  fetch('skor.txt')
+    .then(response => response.text())
+    .then(text => {
+      document.getElementById('liveScore').textContent = '🔴 Skor Terkini: ' + text.replace(/\n/g, ' | ');
+    })
+    .catch(err => {
+      document.getElementById('liveScore').textContent = '🔴 Gagal memuat skor';
+    });
+</script>
 
-  <br />
-
-  <div class="content">
-    <h2>📌 Jadwal Pertandingan</h2>
-    <ul>
-      <li><strong>Aras Angkasa vs PL VC</strong> – 6 Juli 2025 – 15.00 WIB</li>
-      <li><strong>Rajawali VC vs Putra Gintes</strong> – 6 Juli 2025 – 16.00 WIB</li>
-    </ul>
-  </div>
 </body>
 </html>
